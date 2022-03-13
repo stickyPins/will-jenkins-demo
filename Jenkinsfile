@@ -11,6 +11,7 @@ pipeline {
             steps {
                 script {
                    gv = load "script.groovy" 
+                    echo "initialize application"
                 }
             }
         }
@@ -18,6 +19,7 @@ pipeline {
             steps {
                 script {
                     gv.buildApp()
+                    echo "build application"
                 }
             }
         }
@@ -25,6 +27,7 @@ pipeline {
             when {
                 expression {
                     params.executeTests
+                    echo "test application"
                 }
             }
             steps {
@@ -37,6 +40,7 @@ pipeline {
             steps {
                 script {
                     gv.deployApp()
+                    echo "deploy application"
                 }
             }
         }
